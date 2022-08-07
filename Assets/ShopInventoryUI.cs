@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopInventoryUI : MonoBehaviour
 {
@@ -16,19 +17,29 @@ public class ShopInventoryUI : MonoBehaviour
     public Tab baseItem;
     private void Awake()
     {
+        int index = 0;
         foreach (GameData gameData in gameDataList)
         {
             Tab TabItem = Instantiate(baseItem
                 , baseItem.transform.parent);
             TabItem.Init(gameData);
+            var button = TabItem.GetComponent<Button>();
+
+            int setIndex = index;
+            //button.onClick.AddListener(() => SelectTab(index));
+            //button.onClick.AddListener(() => SelectTab(setIndex));
+            button.AddListener(this, SelectTab1);
+            index++;
+
             childsTabs.Add(TabItem);
         }
         baseItem.gameObject.SetActive(false);
 
         SelectTab(0);
     }
+    void SelectTab1() => SelectTab(1);
 
-    void SelectTab(int tabIndex)
+    public void SelectTab(int tabIndex)
     {
         for (int i = 0; i < childsTabs.Count; i++)
         {
