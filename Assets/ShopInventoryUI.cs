@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class ShopInventoryUI : MonoBehaviour
 {
-    public GameData gameData;
-    public InventoryItem baseItem;
+    public List<GameData> gameDataList;
 
     [System.Serializable]
     public class GameData
     {
-        //public Sprite tabIcon;
+        public Sprite tabIcon;
         public List<Sprite> items = new List<Sprite>();
     }
+    public Tab baseItem;
     private void Awake()
     {
-        foreach (Sprite item in gameData.items)
+        foreach (GameData gameData in gameDataList)
         {
-            InventoryItem newItem = Instantiate(baseItem
+            Tab TabItem = Instantiate(baseItem
                 , baseItem.transform.parent);
-            newItem.Init(item);
+            TabItem.Init(gameData);
         }
         baseItem.gameObject.SetActive(false);
     }
