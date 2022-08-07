@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(SaveData))]    
 public class UserDataManager : MonoBehaviour
 {
     public TMP_Text goldText;
@@ -21,6 +22,7 @@ public class UserDataManager : MonoBehaviour
     private void UpdateGoldUI()
     {
         //숫자 천단위로 ","표시됨 (예:1,000)
+        //표준 서식 문자열 https://docs.microsoft.com/ko-kr/dotnet/standard/base-types/standard-numeric-format-strings
         goldText.text = UserData.gold.ToString("N0"); 
     }
 

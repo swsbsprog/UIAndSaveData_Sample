@@ -7,6 +7,7 @@ public class ShopInventoryUI : MonoBehaviour
 {
     public List<GameData> gameDataList;
     public List<Tab> childsTabs = new();
+    public UserDataManager userDataManager;
 
     [System.Serializable]
     public class GameData
@@ -56,6 +57,7 @@ public class ShopInventoryUI : MonoBehaviour
 
         print($"{InventoryItem.selectedItem.icon.sprite.name} 사자");
         //UserData에 넣자.
+        userDataManager.BuyItem(InventoryItem.selectedItem.icon.sprite.name);
         InventoryItem.selectedItem = null;
     }
 }
