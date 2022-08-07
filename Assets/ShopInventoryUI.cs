@@ -45,4 +45,17 @@ public class ShopInventoryUI : MonoBehaviour
             childsTabs[i].SetActive(tabIndex == i);
         }
     }
+
+    public void OnClickSelectedItemBuy()
+    {
+        if (InventoryItem.selectedItem == null)
+        {
+            Debug.LogWarning("선택된 아이템이 없음");
+            return;
+        }
+
+        print($"{InventoryItem.selectedItem.icon.sprite.name} 사자");
+        //UserData에 넣자.
+        InventoryItem.selectedItem = null;
+    }
 }
