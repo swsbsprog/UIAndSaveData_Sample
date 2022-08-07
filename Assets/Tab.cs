@@ -32,5 +32,6 @@ public class Tab : MonoBehaviour
     public void SetActive(bool state)
     {
         childsItems.ForEach(x => x.gameObject.SetActive(state));
+        GetComponent<Animator>().Play(state == true ? "ActiveTab" : "InactiveTab");   
     }
 }
