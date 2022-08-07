@@ -43,4 +43,9 @@ public class UserDataManager : MonoBehaviour
         UserData.haveItem.Remove(sellItemName);
         ChangeGold(5);
     }
+
+    internal bool IsEnoughGold(int price)
+    {
+        return userData.gold >= price;
+    }
 }

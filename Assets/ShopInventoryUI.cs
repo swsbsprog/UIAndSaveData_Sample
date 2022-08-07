@@ -51,13 +51,21 @@ public class ShopInventoryUI : MonoBehaviour
     {
         if (InventoryItem.selectedItem == null)
         {
-            Debug.LogWarning("선택된 아이템이 없음");
+            DialogUI.instance.ShowUI("선택된 아이템이 없음");
             return;
         }
 
-        print($"{InventoryItem.selectedItem.icon.sprite.name} 사자");
+        if(userDataManager.IsEnoughGold(10) == false)
+        {
+            DialogUI.instance.ShowUI("골드가 충분하지 않습니다");
+            return;
+        }
+
+
+        string buyItemName = InventoryItem.selectedItem.icon.sprite.name;
+        print($"{buyItemName} 사자");
         //UserData에 넣자.
-        userDataManager.BuyItem(InventoryItem.selectedItem.icon.sprite.name);
+        userDataManager.BuyItem(buyItemName);
         InventoryItem.selectedItem = null;
     }
 }
