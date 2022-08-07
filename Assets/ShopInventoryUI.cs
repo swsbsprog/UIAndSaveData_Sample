@@ -28,7 +28,7 @@ public class ShopInventoryUI : MonoBehaviour
             int setIndex = index;
             //button.onClick.AddListener(() => SelectTab(index));
             //button.onClick.AddListener(() => SelectTab(setIndex));
-            button.AddListener(this, SelectTab1);
+            button.AddListener(this, () => SelectTab(setIndex));
             index++;
 
             childsTabs.Add(TabItem);
@@ -37,7 +37,6 @@ public class ShopInventoryUI : MonoBehaviour
 
         SelectTab(0);
     }
-    void SelectTab1() => SelectTab(1);
 
     public void SelectTab(int tabIndex)
     {
